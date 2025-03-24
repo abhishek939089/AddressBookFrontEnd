@@ -4,13 +4,13 @@ This is a **Spring Boot + Angular** Address Book application that performs CRUD 
 
 #Project Structure
 
-/addressBook
-├── /backend
-│   ├── /src
-│   │   ├── /main
-│   │   │   ├── /java/com/example/addressBook
-│   │   │   │   ├── /controller
-│   │   │   │   ├── /dto
+- /addressBook
+- ├── /backend
+- │   ├── /src
+- │   │   ├── /main
+- │   │   │   ├── /java/com/example/addressBook
+- │   │   │   │   ├── /controller
+- │   │   │   │   ├── /dto
 │   │   │   │   ├── /exception
 │   │   │   │   ├── /model
 │   │   │   │   ├── /repository
