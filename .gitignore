@@ -1,0 +1,98 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+/.angular/cache
+/angular.json.bak
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# Logs and debug
+*.log
+*.bak
+*.swp
+*.swo
+*.swn
+*.lock
+/logs
+*.pid
+*.seed
+*.pid.lock
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/pnpm-debug.log*
+
+# Debug
+/coverage
+/testem.log
+/libpeerconnection.log
+/karma-results/
+
+# System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*.iml
+*.class
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+
+# TypeScript
+*.tsbuildinfo
+/typings
+/tsconfig.tsbuildinfo
+
+# Environment
+.env
+.env.*
+*.local
+
+# Compiled JavaScript/TypeScript files
+*.js
+*.d.ts
+*.map
+*.module.ts
+
+# Angular service worker
+/ngsw-config.json
+/ngsw-worker.js
+/safety-worker.js
+
+# Temporary files
+/.cache
+/.eslintcache
+/.pnp
+.pnp.js
+
+# Build artifact
+/dist
+/build
+/www
