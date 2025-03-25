@@ -1,24 +1,181 @@
+/* Contact List Container */
+.contacts-container {
+  background: #ffffff;
+  border-radius: 12px; /* Matches modal-container */
+  padding: 40px; /* Matches modal-container */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Matches modal-container */
+  border: 1px solid #dceefb; /* Light blue border */
+  margin-top: 30px;
+  max-width: 1000px; /* Wider than modal to indicate primary content */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header Styles */
+.contacts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.contacts-header h2 {
+  color: #1565c0; /* Dark blue heading */
+  margin: 10px 0 5px;
+}
+
+.add-person-btn {
+  background: #007bff; /* Bright blue */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-person-btn:hover {
+  background: #0056b3; /* Darker blue on hover */
+}
+
+/* Table Styles */
+.contacts-table {
+  overflow-x: auto;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #bbdefb; /* Light blue border */
+}
+
+th {
+  background-color: #e3f2fd; /* Very light blue */
+  color: #0d47a1; /* Dark blue text */
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  color: #424242; /* Dark gray text */
+  vertical-align: middle;
+}
+
+tr:hover {
+  background-color: #e3f2fd; /* Very light blue hover */
+}
+
+/* Action Buttons */
+.actions-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn, .delete-btn {
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.edit-btn {
+  background-color: #1e88e5; /* Medium blue */
+  color: white;
+}
+
+.delete-btn {
+  background-color: #d32f2f; /* Dark red */
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #1565c0; /* Darker blue */
+  transform: scale(1.1);
+}
+
+.delete-btn:hover {
+  background-color: #b71c1c; /* Darker red */
+  transform: scale(1.1);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
 }
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-th {
-  background-color: #f2f2f2;
-}
-button {
-  background-color: #f44336;
-  color: white;
-  padding: 5px 10px;
+
+.page-btn {
+  background: none;
   border: none;
+  font-size: 18px;
   cursor: pointer;
+  margin: 0 10px;
+  color: #1565c0; /* Dark blue */
 }
-button:hover {
-  background-color: #d32f2f;
+
+.page-btn:hover {
+  color: #0d47a1;
+}
+
+.pagination span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  table {
+    border: 0;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid #bbdefb;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    padding: 10px;
+    border-bottom: 1px solid #bbdefb;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #0d47a1;
+    margin-right: 15px;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  .actions-cell {
+    justify-content: flex-end;
+  }
 }

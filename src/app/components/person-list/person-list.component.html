@@ -1,26 +1,37 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Full Name</th>
-            <th>Phone Number</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip Code</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let person of persons">
-            <td>{{ person.fullName }}</td>
-            <td>{{ person.phoneNumber }}</td>
-            <td>{{ person.address }}</td>
-            <td>{{ person.city }}</td>
-            <td>{{ person.state }}</td>
-            <td>{{ person.zipCode }}</td>
-            <td>
-                <button (click)="deletePerson(person.id)">Delete</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="contacts-container">
+    <div class="contacts-header">
+        <h2>Person Details</h2>
+        <!-- <button class="add-person-btn" (click)="openAddPersonModal()">+ Add Person</button> -->
+    </div>
+
+    <div class="contacts-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fullname</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip Code</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let person of personService.persons$ | async">
+                    <td>{{ person.fullName }}</td>
+                    <td>{{ person.address }}</td>
+                    <td>{{ person.city }}</td>
+                    <td>{{ person.state }}</td>
+                    <td>{{ person.zipCode }}</td>
+                    <td>{{ person.phoneNumber }}</td>
+                    <td class="actions-cell">
+                        <button class="edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="delete-btn" (click)="deletePerson(person.id)" title="Delete Person"><i
+                                class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

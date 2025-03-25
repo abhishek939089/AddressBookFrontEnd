@@ -1,44 +1,51 @@
-<form (ngSubmit)="addPerson()" #personForm="ngForm">
-    <div class="form-group">
-        <label for="fullName">Full Name:</label>
-        <input type="text" id="fullName" [(ngModel)]="person.fullName" name="fullName" placeholder="Enter full name"
-            title="Full name is required" required />
+<div class="modal-container">
+    <div class="modal-header">
+        <h2>PERSON ADDRESS FORM</h2>
+        <button class="close-btn">&times;</button>
     </div>
 
-    <div class="form-group">
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" [(ngModel)]="person.phoneNumber" name="phoneNumber"
-            placeholder="Enter phone number" title="Phone number is required" required />
-    </div>
+    <form (ngSubmit)="addPerson()" #personForm="ngForm" class="contact-form">
+        <div class="input-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" [(ngModel)]="person.fullName" name="fullName" required>
+        </div>
 
-    <div class="form-group">
-        <label for="address">Address:</label>
-        <input type="text" id="address" [(ngModel)]="person.address" name="address" placeholder="Enter address"
-            title="Enter your address" />
-    </div>
+        <div class="input-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" id="phoneNumber" [(ngModel)]="person.phoneNumber" name="phoneNumber" required>
+        </div>
 
-    <div class="form-group">
-        <label for="city">City:</label>
-        <select id="city" [(ngModel)]="person.city" name="city" required>
-            <option value="" disabled>Select City</option>
-            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
-        </select>
-    </div>
+        <div class="input-group">
+            <label for="address">Address</label>
+            <textarea id="address" [(ngModel)]="person.address" name="address" required></textarea>
+        </div>
 
-    <div class="form-group">
-        <label for="state">State:</label>
-        <select id="state" [(ngModel)]="person.state" name="state" required>
-            <option value="" disabled>Select State</option>
-            <option *ngFor="let state of states" [value]="state">{{ state }}</option>
-        </select>
-    </div>
+        <div class="input-group-row">
+            <div class="input-group">
+                <label for="city">City</label>
+                <select id="city" [(ngModel)]="person.city" name="city" required>
+                    <option value="" disabled selected>Select City</option>
+                    <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                </select>
+            </div>
 
+            <div class="input-group">
+                <label for="state">State</label>
+                <select id="state" [(ngModel)]="person.state" name="state" required>
+                    <option value="" disabled selected>Select State</option>
+                    <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+                </select>
+            </div>
 
-    <div class="form-group">
-        <label for="zipCode">Zip Code:</label>
-        <input type="text" id="zipCode" [(ngModel)]="person.zipCode" name="zipCode" placeholder="Enter zip code"
-            title="Enter your zip code" />
-    </div>
+            <div class="input-group">
+                <label for="zipCode">Zip Code</label>
+                <input type="text" id="zipCode" [(ngModel)]="person.zipCode" name="zipCode" required>
+            </div>
+        </div>
 
-    <button type="submit" title="Add a new person">Add Person</button>
-</form>
+        <div class="button-group">
+            <button type="submit" class="add-btn" [disabled]="!personForm.valid">Add</button>
+            <button type="reset" class="reset-btn">Reset</button>
+        </div>
+    </form>
+</div>

@@ -2,173 +2,60 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PersonService } from '../../services/person.service';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faUserPlus, faUser, faPhoneAlt, faMapMarkerAlt, faCity, faFlag, faMailBulk, faSave } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-person',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, FontAwesomeModule],
   templateUrl: './add-person.component.html',
-  styleUrls: ['./add-person.component.css'],
+  styleUrls: ['./add-person.component.css']
 })
 export class AddPersonComponent {
+  // Font Awesome Icons
+  faUserPlus = faUserPlus;
+  faUser = faUser;
+  faPhoneAlt = faPhoneAlt;
+  faMapMarkerAlt = faMapMarkerAlt;
+  faCity = faCity;
+  faFlag = faFlag;
+  faMailBulk = faMailBulk;
+  faSave = faSave;
+
   person: any = {
     fullName: '',
     phoneNumber: '',
     address: '',
     city: '',
     state: '',
-    zipCode: '',
+    zipCode: ''
   };
 
- cities: string[] = [
-  'Delhi',
-  'Mumbai',
-  'Kolkata',
-  'Chennai',
-  'Bengaluru',
-  'Hyderabad',
-  'Pune',
-  'Ahmedabad',
-  'Jaipur',
-  'Lucknow',
-  'Kanpur',
-  'Nagpur',
-  'Indore',
-  'Patna',
-  'Bhopal',
-  'Ludhiana',
-  'Agra',
-  'Vadodara',
-  'Nashik',
-  'Meerut',
-  'Rajkot',
-  'Varanasi',
-  'Srinagar',
-  'Aurangabad',
-  'Dhanbad',
-  'Amritsar',
-  'Navi Mumbai',
-  'Allahabad',
-  'Howrah',
-  'Ranchi',
-  'Gwalior',
-  'Jodhpur',
-  'Coimbatore',
-  'Vijayawada',
-  'Jabalpur',
-  'Madurai',
-  'Raipur',
-  'Kota',
-  'Guwahati',
-  'Chandigarh',
-  'Solapur',
-  'Hubli-Dharwad',
-  'Bareilly',
-  'Moradabad',
-  'Mysore',
-  'Tiruchirappalli',
-  'Gurgaon',
-  'Aligarh',
-  'Jalandhar',
-  'Bhubaneswar',
-  'Salem',
-  'Mira-Bhayandar',
-  'Warangal',
-  'Thiruvananthapuram',
-  'Bhiwandi',
-  'Saharanpur',
-  'Guntur',
-  'Amravati',
-  'Bikaner',
-  'Noida',
-  'Jamshedpur',
-  'Bhilai',
-  'Cuttack',
-  'Kochi',
-  'Udaipur',
-  'Bhavnagar',
-  'Dehradun',
-  'Asansol',
-  'Nanded',
-  'Ajmer',
-  'Jamnagar',
-  'Ujjain',
-  'Sangli',
-  'Loni',
-  'Siliguri',
-  'Jhansi',
-  'Ulhasnagar',
-  'Nellore',
-  'Jammu',
-  'Sangrur',
-  'Belgaum',
-  'Mangalore',
-  'Ambattur',
-  'Tirunelveli',
-  'Malegaon',
-  'Gaya',
-  'Tiruppur',
-  'Davanagere',
-  'Kozhikode',
-  'Akola',
-  'Kurnool',
-  'Bokaro',
-  'Tumkur',
-  'Bhagalpur',
-  'Kollam',
-  'Alwar',
-  'Rajahmundry',
-  'Bilaspur',
-  'Madhyamgram',
-  'Muzaffarpur',
-  'Mathura',
-  'Hapur',
-  'Firozabad',
-  'Durgapur',
-  'Nizamabad',
-  'Parbhani',
-];
+  cities: string[] = [
+    'Mumbai', 'Delhi', 'Bangalore', 'Hyderabad',
+    'Chennai', 'Kolkata', 'Pune', 'Jaipur'
+  ];
+
   states: string[] = [
-  'Delhi',
-  'Maharashtra',
-  'West Bengal',
-  'Tamil Nadu',
-  'Karnataka',
-  'Telangana',
-  'Gujarat',
-  'Uttar Pradesh',
-  'Rajasthan',
-  'Madhya Pradesh',
-  'Punjab',
-  'Bihar',
-  'Odisha',
-  'Haryana',
-  'Assam',
-  'Chhattisgarh',
-  'Kerala',
-  'Jharkhand',
-  'Uttarakhand',
-  'Himachal Pradesh',
-  'Goa',
-  'Tripura',
-  'Meghalaya',
-  'Manipur',
-  'Nagaland',
-  'Arunachal Pradesh',
-  'Mizoram',
-  'Sikkim',
-  'Andhra Pradesh',
-];
+    'Maharashtra', 'Delhi', 'Karnataka', 'Telangana',
+    'Tamil Nadu', 'West Bengal', 'Rajasthan', 'Uttar Pradesh'
+  ];
+
   constructor(private personService: PersonService) {}
 
   addPerson() {
     if (this.person.fullName && this.person.phoneNumber) {
-      this.personService.addPerson(this.person).subscribe(() => {
-        alert('Person added successfully');
-        this.resetForm();
+      this.personService.addPerson(this.person).subscribe({
+        next: () => {
+          alert('Contact added successfully!');
+          this.resetForm();
+        },
+        error: (err) => {
+          console.error('Error adding contact:', err);
+          alert('Failed to add contact. Please try again.');
+        }
       });
-    } else {
-      alert('Please fill all required fields');
     }
   }
 
@@ -179,7 +66,7 @@ export class AddPersonComponent {
       address: '',
       city: '',
       state: '',
-      zipCode: '',
+      zipCode: ''
     };
   }
 }
